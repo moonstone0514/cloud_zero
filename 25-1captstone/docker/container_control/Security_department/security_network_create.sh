@@ -1,11 +1,9 @@
 docker network create \
   --driver bridge \
-  --subnet=192.168.20.0/24 \
-  --gateway=192.168.20.1 \
+  --subnet=192.168.10.0/24 \
+  --gateway=192.168.10.1 \
   security_net
 
-
-docker network connet security_net security_gateway
 
 docker network connet security_net security_switch
 
