@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  host1:
+    image: cloud_project:dev
+    container_name: security01
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host2:
+    image: cloud_project:dev
+    container_name: security02
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host3:
+    image: cloud_project:dev
+    container_name: security03
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host4:
+    image: cloud_project:dev
+    container_name: security04
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host5:
+    image: cloud_project:dev
+    container_name: security05
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host6:
+    image: cloud_project:dev
+    container_name: security06
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host7:
+    image: cloud_project:dev
+    container_name: security07
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host8:
+    image: cloud_project:dev
+    container_name: security08
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host9:
+    image: cloud_project:dev
+    container_name: security09
+    command: sleep infinity
+    networks:
+      - security_net
+
+  host10:
+    image: cloud_project:dev
+    container_name: security10
+    command: sleep infinity
+    networks:
+      - security_net
+
+networks:
+  security_net:
+    driver: bridge
