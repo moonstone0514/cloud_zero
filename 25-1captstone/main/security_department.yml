@@ -1,0 +1,189 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security01
+  template:
+    metadata:
+      labels:
+        app: security01
+    spec:
+      containers:
+        - name: security01
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security02
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security02
+  template:
+    metadata:
+      labels:
+        app: security02
+    spec:
+      containers:
+        - name: security02
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security03
+  template:
+    metadata:
+      labels:
+        app: security03
+    spec:
+      containers:
+        - name: security03
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security04
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security04
+  template:
+    metadata:
+      labels:
+        app: security04
+    spec:
+      containers:
+        - name: security04
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security05
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security05
+  template:
+    metadata:
+      labels:
+        app: security05
+    spec:
+      containers:
+        - name: security05
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security06
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security06
+  template:
+    metadata:
+      labels:
+        app: security06
+    spec:
+      containers:
+        - name: security06
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security07
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security07
+  template:
+    metadata:
+      labels:
+        app: security07
+    spec:
+      containers:
+        - name: security07
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security08
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security08
+  template:
+    metadata:
+      labels:
+        app: security08
+    spec:
+      containers:
+        - name: security08
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security09
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security09
+  template:
+    metadata:
+      labels:
+        app: security09
+    spec:
+      containers:
+        - name: security09
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security10
+  template:
+    metadata:
+      labels:
+        app: security10
+    spec:
+      containers:
+        - name: security10
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]

@@ -1,0 +1,109 @@
+---
+# ✅ attacker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attacker-deployment
+  labels:
+    role: attacker
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      role: attacker
+  template:
+    metadata:
+      labels:
+        role: attacker
+    spec:
+      containers:
+        - name: attacker-host
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+# ✅ analyst-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyst-deployment
+  labels:
+    role: analyst
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      role: analyst
+  template:
+    metadata:
+      labels:
+        role: analyst
+    spec:
+      containers:
+        - name: analyst-host
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+# ✅ defender-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: defender-deployment
+  labels:
+    role: defender
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      role: defender
+  template:
+    metadata:
+      labels:
+        role: defender
+    spec:
+      containers:
+        - name: defender-host
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+---
+# ✅ splunk (로그 수집기)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk-deployment
+  labels:
+    app: splunk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunk
+  template:
+    metadata:
+      labels:
+        app: splunk
+    spec:
+      containers:
+        - name: splunk
+          image: splunk/splunk:latest
+          ports:
+            - containerPort: 8088
+---
+# ✅ NetworkPolicy - 분석 부서만 Splunk 접근 가능
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-analyst-to-splunk
+spec:
+  podSelector:
+    matchLabels:
+      role: analyst
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: splunk
+      ports:
+        - protocol: TCP
+          port: 8088

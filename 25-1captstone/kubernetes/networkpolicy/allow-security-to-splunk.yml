@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-security-to-splunk
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: splunk
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              role: security
+      ports:
+        - protocol: TCP
+          port: 8000

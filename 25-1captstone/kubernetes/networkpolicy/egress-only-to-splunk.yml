@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: egress-only-to-splunk
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: security
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: splunk
+      ports:
+        - protocol: TCP
+          port: 8000

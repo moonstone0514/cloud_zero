@@ -1,0 +1,209 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security01
+  template:
+    metadata:
+      labels:
+        app: security01
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security02
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security02
+  template:
+    metadata:
+      labels:
+        app: security02
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security03
+  template:
+    metadata:
+      labels:
+        app: security03
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security04
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security04
+  template:
+    metadata:
+      labels:
+        app: security04
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security05
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security05
+  template:
+    metadata:
+      labels:
+        app: security05
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security06
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security06
+  template:
+    metadata:
+      labels:
+        app: security06
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security07
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security07
+  template:
+    metadata:
+      labels:
+        app: security07
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security08
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security08
+  template:
+    metadata:
+      labels:
+        app: security08
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security09
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security09
+  template:
+    metadata:
+      labels:
+        app: security09
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security10
+  template:
+    metadata:
+      labels:
+        app: security10
+        role: security
+    spec:
+      serviceAccountName: security-sa
+      containers:
+      - name: security-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
