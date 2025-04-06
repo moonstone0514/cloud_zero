@@ -1,6 +1,3 @@
-#!/bin/bash
-# Minikube 및 환경 설정
-
 echo "[+] Minikube Docker 환경 적용"
 eval $(minikube docker-env)
 

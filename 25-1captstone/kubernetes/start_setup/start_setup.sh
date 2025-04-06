@@ -5,5 +5,10 @@
 #!/bin/bash
 # 초기 설정 및 이미지 빌드 전체 실행
 
+echo "[+] 쿠버네티스 리소스 생성 시작..."
+
 bash ./setup.sh
+
+echo "[+] Docker 이미지 빌드 시작..."
+
 bash ./create_docker_image.sh
