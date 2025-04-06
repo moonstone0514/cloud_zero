@@ -18,3 +18,18 @@ kubectl apply -f ../networkpolicy/
 
 echo -e "\n\n\n\n\n=============POD 결과 출력============="
 kubectl get pods
+
+
+echo "[5] splunk 포트포워딩 수행 8000번"
+kubectl apply -f ../service/services/splunk_portforward.sh
+echo "splunk 포트포워딩 실행 완료"
+
+
+echo "[6] elasticsearch 포트포워딩 수행 9200번"
+kubectl apply -f ../service/services/splunk_portforward.sh
+echo "[6] elasticsearch 포트포워딩 실행 완료"
+
+
+echo "[7] kibana 포트포워딩 수행 5601번"
+kubectl apply -f ../service/services/splunk_portforward.sh
+echo "[7] kibana 포트포워딩 실행완료"
