@@ -1,35 +1,29 @@
 #!/bin/bash
 
-# 전체 리소스 순차 실행
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-echo "[1] ServiceAccount + RBAC 설정"
-kubectl apply -f ../serviceaccount/
-kubectl apply -f ../rbac/
+echo "[+] 쿠버네티스 리소스 적용 시작..."
 
-echo "[2] Pod (Deployment) 생성"
-kubectl apply -f ../deployments/
+kubectl apply -f "$BASE_DIR/services/splunk.yml"
 
-echo "[3] 서비스 (Splunk, Suricata, ELK) 생성"
-kubectl apply -f ../services/
+# 순서대로 실행
+kubectl apply -f ../services/elasticsearch.yml
+sleep 10
+kubectl apply -f ../services/logstash.yml
+sleep 10
+kubectl apply -f ../services/filebeat.yml
+sleep 5
+kubectl apply -f ../services/kibana.yml
+sleep 5
+kubectl apply -f ../deployments/suricata-daemonset.yml
 
-echo "[4] 네트워크 정책 생성"
-kubectl apply -f ../networkpolicy/
+
+kubectl apply -f "$BASE_DIR/deployments/"
+kubectl apply -f "$BASE_DIR/configmap/"
+kubectl apply -f "$BASE_DIR/rbac/"
+kubectl apply -f "$BASE_DIR/serviceaccount/"
+# kubectl apply -f "$BASE_DIR/networkpolicy/"
 
 
 echo -e "\n\n\n\n\n=============POD 결과 출력============="
 kubectl get pods
-
-
-echo "[5] splunk 포트포워딩 수행 8000번"
-kubectl apply -f ../service/services/splunk_portforward.sh
-echo "splunk 포트포워딩 실행 완료"
-
-
-echo "[6] elasticsearch 포트포워딩 수행 9200번"
-kubectl apply -f ../service/services/splunk_portforward.sh
-echo "[6] elasticsearch 포트포워딩 실행 완료"
-
-
-echo "[7] kibana 포트포워딩 수행 5601번"
-kubectl apply -f ../service/services/splunk_portforward.sh
-echo "[7] kibana 포트포워딩 실행완료"

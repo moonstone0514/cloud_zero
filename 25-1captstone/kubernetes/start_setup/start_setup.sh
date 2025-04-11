@@ -1,14 +1,10 @@
-
-#쿠버네티스를 실행하기 전 필요한 설정 및 minikube(clico) 실행을 위해 setup.sh 실행
-#쿠버네티스를 처음 실행시 필요로 하는 이미지 빌드를 위한 create_docker_image.sh 실행
-
 #!/bin/bash
-# 초기 설정 및 이미지 빌드 전체 실행
+# 전체 셋업을 위한 엔트리 포인트 스크립트
 
-echo "[+] 쿠버네티스 리소스 생성 시작..."
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-bash ./setup.sh
+echo "[+] 도커 이미지 빌드 스크립트 실행 중..."
+bash "$BASE_DIR/image/docker_image_build.sh"
 
-echo "[+] Docker 이미지 빌드 시작..."
-
-bash ./create_docker_image.sh
+echo "[+] 쿠버네티스 리소스 전체 설정 스크립트 실행 중..."
+bash "$BASE_DIR/container_control/full_setup.sh"

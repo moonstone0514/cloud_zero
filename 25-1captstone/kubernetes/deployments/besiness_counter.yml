@@ -37,163 +37,163 @@ spec:
       - name: business-container
         image: cloud_project:dev
         command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business03
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business03
-  template:
-    metadata:
-      labels:
-        app: business03
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business04
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business04
-  template:
-    metadata:
-      labels:
-        app: business04
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business05
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business05
-  template:
-    metadata:
-      labels:
-        app: business05
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business06
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business06
-  template:
-    metadata:
-      labels:
-        app: business06
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business07
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business07
-  template:
-    metadata:
-      labels:
-        app: business07
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business08
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business08
-  template:
-    metadata:
-      labels:
-        app: business08
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business09
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business09
-  template:
-    metadata:
-      labels:
-        app: business09
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: business10
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: business10
-  template:
-    metadata:
-      labels:
-        app: business10
-    spec:
-      serviceAccountName: business-sa
-      containers:
-      - name: business-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business03
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business03
+#   template:
+#     metadata:
+#       labels:
+#         app: business03
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business04
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business04
+#   template:
+#     metadata:
+#       labels:
+#         app: business04
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business05
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business05
+#   template:
+#     metadata:
+#       labels:
+#         app: business05
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business06
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business06
+#   template:
+#     metadata:
+#       labels:
+#         app: business06
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business07
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business07
+#   template:
+#     metadata:
+#       labels:
+#         app: business07
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business08
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business08
+#   template:
+#     metadata:
+#       labels:
+#         app: business08
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business09
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business09
+#   template:
+#     metadata:
+#       labels:
+#         app: business09
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: business10
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: business10
+#   template:
+#     metadata:
+#       labels:
+#         app: business10
+#     spec:
+#       serviceAccountName: business-sa
+#       containers:
+#       - name: business-container
+#         image: cloud_project:dev
+#         command: ["sleep", "infinity"]
