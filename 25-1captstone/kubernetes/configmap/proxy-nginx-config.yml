@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: proxy-nginx-config
+data:
+  nginx.conf: |
+    events {}
+
+    http {
+      server {
+        listen 80;
+
+        location /splunk/ {
+          proxy_pass http://splunk.default.svc.cluster.local:8000/;
+        }
+
+        location /kibana/ {
+          proxy_pass http://kibana.default.svc.cluster.local:5601/;
+        }
+
+        location /elasticsearch/ {
+          proxy_pass http://elasticsearch.default.svc.cluster.local:9200/;
+        }
+      }
+    }

@@ -5,11 +5,18 @@ metadata:
 data:
   suricata.yaml: |
     %YAML 1.1
+    ---
     af-packet:
       - interface: eth0
         cluster-id: 99
         cluster-type: cluster_flow
         defrag: yes
+
+    classification-file: /etc/suricata/classification.config
+    reference-config-file: /etc/suricata/reference.config
+    default-rule-path: /etc/suricata/rules
+    rule-files:
+      - suricata.rules
 
     outputs:
       - eve-log:
@@ -20,5 +27,4 @@ data:
             - alert
             - dns
             - http
-
             - tls

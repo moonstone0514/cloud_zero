@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy-suricata
+  labels:
+    app: proxy-suricata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy-suricata
+  template:
+    metadata:
+      labels:
+        app: proxy-suricata
+    spec:
+      containers:
+        - name: proxy
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+
+        - name: suricata
+          image: suricata-local
+          imagePullPolicy: Never  # ⭐ 이 줄 추가!
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: suricata-config
+              mountPath: /etc/suricata/
+            - name: log-volume
+              mountPath: /var/log/suricata/
+
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: proxy-nginx-config
+        - name: suricata-config
+          configMap:
+            name: suricata-config
+        - name: log-volume
+          emptyDir: {}

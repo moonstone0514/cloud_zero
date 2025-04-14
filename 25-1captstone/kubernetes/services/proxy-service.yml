@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-service
+spec:
+  selector:
+    app: proxy-suricata
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

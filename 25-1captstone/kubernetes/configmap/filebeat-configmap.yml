@@ -10,9 +10,9 @@ data:
       - type: log
         enabled: true
         paths:
-          - /var/log/suricata/eve.json  # Suricata 로그 파일 경로
+          - /var/log/suricata/eve.json
         fields:
           log_type: suricata
 
     output.logstash:
-      hosts: ["logstash:5044"]  # Logstash가 서비스되는 포트
+      hosts: ["logstash:5044"]
