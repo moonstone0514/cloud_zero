@@ -11,6 +11,10 @@ spec:
     metadata:
       labels:
         app: elasticsearch
+      annotations:
+        # Multus 네트워크 및 고정 IP 지정
+        k8s.v1.cni.cncf.io/networks: >
+          [ { "name": "security-net", "ips": [ "10.20.0.24/32" ] } ]
     spec:
       containers:
         - name: elasticsearch
@@ -41,4 +45,6 @@ spec:
   ports:
     - port: 9200
       targetPort: 9200
-      nodePort: 30920   # External access port for Elasticsearch
+      nodePort: 30920
+  # 필요하다면 ClusterIP를 고정하고 싶을 때:
+  # clusterIP: 10.20.0.24

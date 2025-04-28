@@ -14,6 +14,8 @@ spec:
       labels:
         app: business01
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/business: "true"
       serviceAccountName: business-sa
       containers:
       - name: business-container
@@ -36,6 +38,80 @@ spec:
       labels:
         app: business02
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/business: "true"
+      serviceAccountName: business-sa
+      containers:
+      - name: business-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: business03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: business03
+  template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[ { "name": "business-net", "ips": [ "10.10.0.13/32" ] } ]'
+      labels:
+        app: business03
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/business: "true"
+      serviceAccountName: business-sa
+      containers:
+      - name: business-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: business04
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: business04
+  template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[ { "name": "business-net", "ips": [ "10.10.0.14/32" ] } ]'
+      labels:
+        app: business04
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/business: "true"
+      serviceAccountName: business-sa
+      containers:
+      - name: business-container
+        image: cloud_project:dev
+        command: ["sleep", "infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: business05
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: business05
+  template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: '[ { "name": "business-net", "ips": [ "10.10.0.15/32" ] } ]'
+      labels:
+        app: business05
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/business: "true"
       serviceAccountName: business-sa
       containers:
       - name: business-container
