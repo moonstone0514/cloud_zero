@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: proxy-suricata
-  labels:
-    app: proxy-suricata
 spec:
   replicas: 1
   selector:
@@ -20,24 +18,24 @@ spec:
           args:
             - --provider=oidc
             - --email-domain=*
-            - --upstream=http://localhost:80
+            - --upstream=http://localhost:8081  # nginx가 내부로 받음
             - --http-address=0.0.0.0:4180
             - --redirect-url=http://localhost:4180/oauth2/callback
             - --oidc-issuer-url=http://192.168.49.2:32080/realms/zt-realm
             - --client-id=proxy-client
             - --client-secret=proxysecret
-            - --cookie-secret=t9PHn2l1XoZQ9ccq2KnSGQ==
+            - --cookie-secret=t9PHn2l1XoZQ9ccq2KnSGQ==  # base64 랜덤값
           ports:
             - containerPort: 4180
 
-        - name: proxy
-          image: nginx:latest
-          ports:
-            - containerPort: 80
+        - name: proxy-container
+          image: nginx:stable
           volumeMounts:
             - name: nginx-config
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+          ports:
+            - containerPort: 8081
 
         - name: suricata
           image: jasonish/suricata:latest
@@ -56,7 +54,7 @@ spec:
             name: proxy-nginx-config
         - name: suricata-config
           configMap:
-            name: suricata-config
+            name: suricata-configmap
         - name: log-volume
           emptyDir: {}
 ---

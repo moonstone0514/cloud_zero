@@ -20,9 +20,19 @@ spec:
         node-role.kubernetes.io/security: "true"
       serviceAccountName: security-sa
       containers:
-      - name: security-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
+        - name: security-container
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+        - name: local-db
+          image: mongo:5
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: security01-db-storage
+      volumes:
+        - name: security01-db-storage
+          emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,84 +56,16 @@ spec:
         node-role.kubernetes.io/security: "true"
       serviceAccountName: security-sa
       containers:
-      - name: security-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: security03
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: security03
-  template:
-    metadata:
-      labels:
-        app: security03
-        role: security
-      annotations:
-        k8s.v1.cni.cncf.io/networks: >
-          [ { "name": "security-net", "ips": [ "10.20.0.13/32" ] } ]
-    spec:
-      nodeSelector:
-        node-role.kubernetes.io/security: "true"
-      serviceAccountName: security-sa
-      containers:
-      - name: security-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: security04
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: security04
-  template:
-    metadata:
-      labels:
-        app: security04
-        role: security
-      annotations:
-        k8s.v1.cni.cncf.io/networks: >
-          [ { "name": "security-net", "ips": [ "10.20.0.14/32" ] } ]
-    spec:
-      nodeSelector:
-        node-role.kubernetes.io/security: "true"
-      serviceAccountName: security-sa
-      containers:
-      - name: security-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: security05
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: security05
-  template:
-    metadata:
-      labels:
-        app: security05
-        role: security
-      annotations:
-        k8s.v1.cni.cncf.io/networks: >
-          [ { "name": "security-net", "ips": [ "10.20.0.15/32" ] } ]
-    spec:
-      nodeSelector:
-        node-role.kubernetes.io/security: "true"
-      serviceAccountName: security-sa
-      containers:
-      - name: security-container
-        image: cloud_project:dev
-        command: ["sleep", "infinity"]
+        - name: security-container
+          image: cloud_project:dev
+          command: ["sleep", "infinity"]
+        - name: local-db
+          image: mongo:5
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: security02-db-storage
+      volumes:
+        - name: security02-db-storage
+          emptyDir: {}
