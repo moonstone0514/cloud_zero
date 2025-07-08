@@ -34,7 +34,7 @@
 - **image**: 베이스 이미지 및 개발용 스크립트
 
 
-### Docker Compose
+### ⚙️ Docker Compose
 
 - 여러 컨테이너를 동시에 오케스트레이션하기 위한 docker-compose 설정
 
