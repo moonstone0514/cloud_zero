@@ -1,6 +1,4 @@
-# ☁️ cloud_zero
-
-# 🛡️ 25-1 Capstone Security Container & Kubernetes Project
+# 🛡️ 25-1 Capstone Project
 
 ## 🌐 프로젝트 배경 및 목표
 
